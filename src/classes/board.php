@@ -37,6 +37,10 @@ $cmd[] = '-size '.$this->data['width'].'x'.$this->data['length'].' xc:#00000000 
     echo 'Executing command: '.$cmd."\n";
     exec($cmd);
   }
+  public function explain(){
+    parent::explain();
+    echo "\n";
+  }
   public function toString(){
     $val= 'Board with dimensions '.$this->data['dimensions']->toString();
     foreach($this->data['chips'] as $chip)

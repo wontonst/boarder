@@ -1,7 +1,7 @@
 <?php
 
 function __autoload($classname){
-  include('classes/'.strtolower($classname).'.php');
+  include(__DIR__.'/classes/'.strtolower($classname).'.php');
 }
 include('config.php');
 $GLOBALS['config']=$config;
@@ -17,11 +17,11 @@ function randomBoard(){
   $board->explain();
   return;
 }
-public function genericBoard(){
+function genericBoard(){
   $board = new Board(140,140);
   $board->addChip(new CPU(10,10,100));
-  $board->execute('cpu.png');
   $board->explain();
+  $board->execute('cpu.png');
 }
 
 ?>

@@ -9,6 +9,7 @@ class Pin extends Base{
     $this->data['x']=$x;
     $this->data['y']=$y;
     $this->data['direction']=$direction;
+    $this->calculateLines();
   }
   private function calculateLines(){
     $this->data['lines']=array();
@@ -101,7 +102,6 @@ class Pin extends Base{
      Draw 3 lines to represent the pin.
   */
   public function build(){
-    $this->calculateLines();
     $cmd =array();
 $cmd =' -strokewidth '.$GLOBALS['config']['PIN_STROKEWIDTH'];
     foreach($this->data['lines'] as $line){
