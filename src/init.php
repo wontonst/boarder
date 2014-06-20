@@ -1,8 +1,7 @@
 <?php
-
-function __autoload($classname){
-  include(__DIR__.'/classes/'.strtolower($classname).'.php');
-}
+spl_autoload_register(function ($classname){
+ include __DIR__.'/classes/'.strtolower($classname).'.php';
+ });
 include('config.php');
 $GLOBALS['config']=$config;
 
