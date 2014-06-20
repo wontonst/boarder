@@ -8,5 +8,4 @@ $config=array(
 	      'MIN_CHIP_PIN_EDGE'=>3, //minimum distance between edge of generic chip and a pin
 	      'PIN_STROKEWIDTH'=>.5,  //thickness of the pin lines
 	      );
-$GLOBALS['config']=$config;
 ?>
