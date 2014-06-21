@@ -8,6 +8,7 @@ class Pin extends Base{
   public function __construct($x,$y,$direction){
     $this->data['x']=$x;
     $this->data['y']=$y;
+    $this->data['point']=new Point($x,$y);
     $this->data['direction']=$direction;
     $this->calculateLines();
   }
