@@ -10,6 +10,9 @@ class ChipTest extends PHPUnit_Framework_TestCase{
     $chip = new Chip($name,$x,$y,$w,$h);
     $this->assertEquals($name,$chip->data['name']);
     $this->assertEquals($x,$chip->data['point']->x);
+    $this->assertEquals($y,$chip->data['point']->y);
+    $this->assertEquals($w,$chip->data['dimensions']->width);
+    $this->assertEquals($h,$chip->data['dimensions']->length);
   }
   /**
 @depends testInitialize
