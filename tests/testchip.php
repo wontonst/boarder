@@ -2,17 +2,18 @@
 class ChipTest extends PHPUnit_Framework_TestCase{
 
   public function testInitialize(){
+    $errorsuffix=' not passed correctly in constructor.';
     $name='trofl#132(*&^';
     $x=321;
     $y=123;
     $w=100000;
     $h=1;
     $chip = new Chip($name,$x,$y,$w,$h);
-    $this->assertEquals($name,$chip->data['name']);
-    $this->assertEquals($x,$chip->data['point']->x);
-    $this->assertEquals($y,$chip->data['point']->y);
-    $this->assertEquals($w,$chip->data['dimensions']->width);
-    $this->assertEquals($h,$chip->data['dimensions']->length);
+    $this->assertEquals($name,$chip->data['name'],'Chip name'.$errorsuffix);
+    $this->assertEquals($x,$chip->data['point']->x,'Chip x-coordinate'.$errorsuffix);
+    $this->assertEquals($y,$chip->data['point']->y,'Chip y-coordinate'.$errorsuffix);
+    $this->assertEquals($w,$chip->data['dimensions']->width,'Chip width dimension'.$errorsuffix);
+    $this->assertEquals($h,$chip->data['dimensions']->length,'Chip length dimension'.$errorsuffix);
   }
   /**
      @depends testInitialize
