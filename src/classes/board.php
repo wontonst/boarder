@@ -3,8 +3,6 @@
 class Board extends Base{
   
   public function __construct($width, $length){
-    $this->data['width']=$width;
-    $this->data['length']=$length;
     $this->data['dimensions']=new Dimension($width,$length);
   }
 
@@ -18,7 +16,7 @@ class Board extends Base{
   }
   public function build(){
     $cmd = array();
-$cmd[] = '-size '.$this->data['width'].'x'.$this->data['length'].' xc:#00000000 ';
+$cmd[] = '-size '.$this->data['dimensions']->width.'x'.$this->['length'].' xc:#00000000 ';
 
     if($this->data['chips'])
       foreach($this->data['chips'] as $chip){
