@@ -2,8 +2,8 @@
 /**
 A string command to be executed by the Executor to create the image.
  */
-class Command{
-  public function __construct(){
+abstract class Command{
+  public function __construct($traversal=CommandTraversal::PRE_ORDER){
     $this->data=array();
     $this->data['dependents']=array();
     $this->data['size']=0;
@@ -30,41 +30,17 @@ class Command{
   public function totalLength(){
     return $this->data['size']+$this->commandLength();
   }
-  public function peekCommand(){
-    if($this->data['done'])
-      return null;
-    $keys=array_keys($this->data['dependents']);
-    foreach($keys as $key){
-      if($this->data['dependents'][$key]->isDone()){
-	unset($this->data['dependents'][$key]);
-	continue;
-      }
-      return $this->data['dependents'][$key]->peekCommand();   
-    }
-    return $this->data['cmd'];
-  }
-  /**
-     Retrieves the next executable string.
-   */
-  public function popCommand(){
-    if($this->data['done'])
-      return null;
-    $keys=array_keys($this->data['dependents']);
-    foreach($keys as $key){
-      if($this->data['dependents'][$key]->isDone()){
-	unset($this->data['dependents'][$key]);
-	continue;
-      }
-      return $this->data['dependents'][$key]->popCommand();   
-    }
-    $this->data['done']=true;
-    return $this->data['cmd'];
-  }
   public function isDone(){
     return $this->data['done'];
   }
   public function cmdString(){
     return $this->data['cmd'];
+  }
+  public function peekCommand(){
+    return $this->traversal->peekCommand();
+  }
+  public function popCommand(){
+    return $this->traversal->popCommand();
   }
 }
 

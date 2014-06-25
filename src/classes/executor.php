@@ -10,6 +10,12 @@ class Executor{
   public function addCmd($cmd){
     $this->data['cmds'][]=$cmd;
   }
+  public function setIn($in){
+
+  }
+  public function setOut($out){
+
+  }
   private function optimizeCommands(){
 
   }
