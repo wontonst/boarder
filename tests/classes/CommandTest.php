@@ -3,7 +3,7 @@
 class CommandTest extends PHPUnit_Framework_TestCase{
 
   public function testInitialize(){
-    $cmd = new Command();
+    $cmd = new Command(CommandTraversal::IN_ORDER);
     $this->assertTrue($cmd->isDone());
     $this->assertTrue(isset($cmd->data));
     $this->assertCount(0,$cmd->data['dependents']);

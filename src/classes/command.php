@@ -2,13 +2,14 @@
 /**
 A string command to be executed by the Executor to create the image.
  */
-abstract class Command{
-  public function __construct($traversal=CommandTraversal::PRE_ORDER){
+class Command{
+  public function __construct($traversal=CommandTraversal::POST_ORDER){
     $this->data=array();
     $this->data['dependents']=array();
     $this->data['size']=0;
     $this->data['done']=true;
     $this->data['cmd']=null;
+    $this->traversal=CommandTraversal::get($this,$traversal);
   }
   public function setCommand($cmd){
     $this->data['cmd']=$cmd;
