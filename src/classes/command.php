@@ -31,31 +31,30 @@ class Command{
     return $this->data['size']+$this->commandLength();
   }
   public function peekCommand(){
-    if(!$this->data['cmd'])
-      return '';
     if($this->data['done'])
-      return '';
+      return null;
     $keys=array_keys($this->data['dependents']);
     foreach($keys as $key){
-      if($this->data['dependents'][$key]->isDone())
+      if($this->data['dependents'][$key]->isDone()){
 	unset($this->data['dependents'][$key]);
+	continue;
+      }
       return $this->data['dependents'][$key]->peekCommand();   
     }
-    $this->data['done']=true;
     return $this->data['cmd'];
   }
   /**
      Retrieves the next executable string.
    */
   public function popCommand(){
-    if(!$this->data['cmd'])
-      return null;
     if($this->data['done'])
       return null;
     $keys=array_keys($this->data['dependents']);
     foreach($keys as $key){
-      if($this->data['dependents'][$key]->isDone())
+      if($this->data['dependents'][$key]->isDone()){
 	unset($this->data['dependents'][$key]);
+	continue;
+      }
       return $this->data['dependents'][$key]->popCommand();   
     }
     $this->data['done']=true;

@@ -27,11 +27,14 @@ class ChipTest extends PHPUnit_Framework_TestCase{
     $this->assertFalse(isset($chip->data['pins']));
     $chip->addPins(Direction::UP);
     $this->assertArrayHasKey('pins',$chip->data);
-    $this->assertCount(1,$chip->data['pins']);
+    $this->assertCount(1,$chip->data['pins'],'Could not add pin Direction::UP');
     $this->assertEquals($minEdge+$pinwidth/2,$chip->data['pins'][0]->data['point']->x);
     $chip->addPins(Direction::LEFT);
+    $this->assertCount(2,$chip->data['pins'],'Could not add pin Direction::LEFT');
     $chip->addPins(Direction::DOWN);
+    $this->assertCount(3,$chip->data['pins'],'Could not add pin Direction::DOWN');
     $chip->addPins(Direction::RIGHT);
+    $this->assertCount(4,$chip->data['pins'],'Could not add pin Direction::RIGHT');
   }
 
 }
