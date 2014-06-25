@@ -4,9 +4,7 @@
 Executes commands starting at leaf nodes.
 */
 class PostOrderCT extends CommandTraversal{
-  public function peekCommand(){
-    if($this->parent->isDone())
-      return null;
+  protected function peekDependent(){
     $keys=array_keys($this->parent->data['dependents']);
     foreach($keys as $key){
       if($this->parent->data['dependents'][$key]->isDone()){
@@ -15,14 +13,9 @@ class PostOrderCT extends CommandTraversal{
       }
       return $this->parent->data['dependents'][$key]->peekCommand();   
     }
-    return $this->parent->data['cmd'];
+    return NULL;
   }
-  /**
-     Retrieves the next executable string.
-   */
-  public function popCommand(){
-    if($this->parent->isDone())
-      return null;
+  protected function popDependent(){
     $keys=array_keys($this->parent->data['dependents']);
     foreach($keys as $key){
       if($this->parent->data['dependents'][$key]->isDone()){
@@ -31,8 +24,7 @@ class PostOrderCT extends CommandTraversal{
       }
       return $this->parent->data['dependents'][$key]->popCommand();   
     }
-    $this->parent->data['done']=true;
-    return $this->parent->data['cmd'];
+    return NULL;
   }
 }
 ?>

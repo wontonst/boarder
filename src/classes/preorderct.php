@@ -2,8 +2,14 @@
 /**
 Returns commands starting at the root
 */
-class RootCommand extends Command{
+class PreOrderCT extends CommandTraversal{
 
+  public function peekDependent(){
+
+  }
+  public function peekDependent(){
+
+  }
 }
 
 ?>
