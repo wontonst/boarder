@@ -4,10 +4,10 @@ Returns commands starting at the root
 */
 class PreOrderCT extends CommandTraversal{
 
-  public function peekDependent(){
+  public function peekCommand(){
 
   }
-  public function peekDependent(){
+  public function popCommand(){
 
   }
 }
