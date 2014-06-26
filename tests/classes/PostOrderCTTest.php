@@ -54,6 +54,8 @@ class PostOrderCTTest extends PHPUnit_Framework_TestCase{
       $this->cmds[$i]->setCommand('Command #'.$i);
       $this->assertEquals('Command #'.$i,$this->cmds[12]->popCommand());
     }
+    $this->assertNull($this->cmds[12]->peekCommand());
+    $this->assertNull($this->cmds[12]->popCommand());
   }
   public function testPop2(){
     for($i = 5; $i != 10; $i++){
@@ -67,6 +69,8 @@ class PostOrderCTTest extends PHPUnit_Framework_TestCase{
     $this->assertEquals('Command #4',$this->cmds[12]->popCommand());
     $this->assertEquals('Command #10',$this->cmds[12]->popCommand());
     $this->assertEquals('Command #11',$this->cmds[12]->popCommand());
+    $this->assertNull($this->cmds[12]->peekCommand());
+    $this->assertNull($this->cmds[12]->popCommand());
   }
 }
 ?>
